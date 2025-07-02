@@ -22,7 +22,8 @@ client = TelegramClient('session_name', api_id, api_hash)
 @app.on_event("startup")
 async def startup_event():
     print("Starting bot...")
-    await client.start()
+    await client.start(phone=os.getenv('TELEGRAM_PHONE'))
+
 
     groups = []
     async for dialog in client.iter_dialogs():
